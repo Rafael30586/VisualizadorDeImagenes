@@ -10,6 +10,8 @@ const Tarjeta = () => {
     const [input, setInput] = useState({});
     const [imagen,setImagen] = useState({});
     const [propiedadTitulo, setPropiedadTitulo] = useState("Brillo: ");
+    const [tarjeta,setTarjeta] = useState({});
+    const [numeroTema, setNumeroTema] = useState(1); 
 
     function agrandar(){
         setAncho(ancho+5);
@@ -45,6 +47,38 @@ const Tarjeta = () => {
         setValor(valor-5);
     }
 
+    function cambiarTema(){
+        if(numeroTema<20){
+            setNumeroTema(numeroTema+1)
+        }else{
+            setNumeroTema(1);
+        }
+        
+        switch(numeroTema){
+            case 1: tarjeta.style.background = "#91210f";break;
+            case 2: tarjeta.style.background = "#2c24d4";break;
+            case 3: tarjeta.style.background = "#50cb6c";break;
+            case 4: tarjeta.style.background = "#de9358";break;
+            case 5: tarjeta.style.background = "#e7cf03";break;
+            case 6: tarjeta.style.background = "#73039c";break;
+            case 7: tarjeta.style.background = "#fb8ab1";break;
+            case 8: tarjeta.style.background = "#919f38";break;
+            case 9: tarjeta.style.background = "#15c483";break;
+            case 10: tarjeta.style.background = "#34a0eb";break;
+            case 11: tarjeta.style.background = "#bff80d";break;
+            case 12: tarjeta.style.background = "#435982";break;
+            case 13: tarjeta.style.background = "#e7e247";break;
+            case 14: tarjeta.style.background = "#8e7432";break;
+            case 15: tarjeta.style.background = "#a10646";break;
+            case 16: tarjeta.style.background = "#5f7624";break;
+            case 17: tarjeta.style.background = "#a03026";break;
+            case 18: tarjeta.style.background = "#696433";break;
+            case 19: tarjeta.style.background = "#003d37";break;
+            case 20: tarjeta.style.background = "#f7bf1b";break;
+        }
+
+    }
+
     useEffect(()=>{
         setPropiedad("brightness");
         setPropiedadTitulo("Brillo: ");
@@ -52,11 +86,12 @@ const Tarjeta = () => {
         setAncho(18);
         setInput(document.getElementById("inputHeader"));
         setImagen(document.getElementById("imagen"));
+        setTarjeta(document.getElementById("contenedor"));
     },[url]);
 
   return (
-      <div className="container mt-1" id="contenedor">
-          <header className="p-3 text-bg-dark sticky-top">
+      <div className="container mt-1 rounded p-1" id="contenedor">
+          <header className="p-3 text-bg-dark sticky-top rounded">
               <div className="container">
                   <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                       <div className="text-strat">
@@ -78,12 +113,12 @@ const Tarjeta = () => {
 
                       <div className="text-end">
                           <button type="button" className="btn btn-success me-2" onClick={() => setUrl(input.value)}>Cargar imagen</button>
-                          <button type="button" className="btn btn-light">Tema</button>
+                          <button type="button" className="btn btn-light" onClick={cambiarTema}>Tema</button>
                       </div>
                   </div>
               </div>
           </header>
-          <div className="card p-1" style={{width: ancho + 'em'}}>
+          <div className="card p-1 m-2" id="tarjeta" style={{width: ancho + 'em'}}>
               <img src={url} className="card-img-top" id="imagen" alt="Foto" style={{filter: `${propiedad}(${valor}%)`}}></img>
               <div className="card-body">
                   <h5 className="card-title">{propiedadTitulo}{valor}</h5>
