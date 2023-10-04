@@ -4,7 +4,7 @@ const Tarjeta = () => {
 
     const [url, setUrl] = useState("https://www.dzoom.org.es/wp-content/uploads/2017/07/seebensee-2384369-810x540.jpg");
     console.log(url);
-    const [ancho, setAncho] = useState(18);
+    const [ancho, setAncho] = useState(25);
     const [propiedad, setPropiedad] = useState("brightness");
     const [valor, setValor] = useState(100);
     const [input, setInput] = useState({});
@@ -12,13 +12,19 @@ const Tarjeta = () => {
     const [propiedadTitulo, setPropiedadTitulo] = useState("Brillo: ");
     const [tarjeta,setTarjeta] = useState({});
     const [numeroTema, setNumeroTema] = useState(1); 
+    const [h5,setH5] = useState({});
+    const [subTarjeta,setSubTarjeta] = useState({});
 
     function agrandar(){
-        setAncho(ancho+5);
+        if(ancho<=65){
+            setAncho(ancho+5);
+        }      
     }
 
     function achicar(){
-        setAncho(ancho-5);
+        if(ancho>=15){
+            setAncho(ancho-5);
+        }
     }
 
     function modificarBrillo(){
@@ -55,26 +61,66 @@ const Tarjeta = () => {
         }
         
         switch(numeroTema){
-            case 1: tarjeta.style.background = "#91210f";break;
-            case 2: tarjeta.style.background = "#2c24d4";break;
-            case 3: tarjeta.style.background = "#50cb6c";break;
-            case 4: tarjeta.style.background = "#de9358";break;
-            case 5: tarjeta.style.background = "#e7cf03";break;
-            case 6: tarjeta.style.background = "#73039c";break;
-            case 7: tarjeta.style.background = "#fb8ab1";break;
-            case 8: tarjeta.style.background = "#919f38";break;
-            case 9: tarjeta.style.background = "#15c483";break;
-            case 10: tarjeta.style.background = "#34a0eb";break;
-            case 11: tarjeta.style.background = "#bff80d";break;
-            case 12: tarjeta.style.background = "#435982";break;
-            case 13: tarjeta.style.background = "#e7e247";break;
-            case 14: tarjeta.style.background = "#8e7432";break;
-            case 15: tarjeta.style.background = "#a10646";break;
-            case 16: tarjeta.style.background = "#5f7624";break;
-            case 17: tarjeta.style.background = "#a03026";break;
-            case 18: tarjeta.style.background = "#696433";break;
-            case 19: tarjeta.style.background = "#003d37";break;
-            case 20: tarjeta.style.background = "#f7bf1b";break;
+            case 1: tarjeta.style.background = "#91210f";
+            subTarjeta.style.borderColor = "white";
+            h5.style.color = "white"; break;
+            case 2: tarjeta.style.background = "#2c24d4";
+            subTarjeta.style.borderColor = "white";
+            h5.style.color = "white";break;
+            case 3: tarjeta.style.background = "#abd6b0";
+            subTarjeta.style.borderColor = "#353535";
+            h5.style.color = "#353535";break;
+            case 4: tarjeta.style.background = "#de9358";
+            subTarjeta.style.borderColor = "#353535";
+            h5.style.color = "#353535";break;
+            case 5: tarjeta.style.background = "#e7cf03";
+            subTarjeta.style.borderColor = "#353535";
+            h5.style.color = "#353535";break;
+            case 6: tarjeta.style.background = "#73039c";
+            subTarjeta.style.borderColor = "white";
+            h5.style.color = "white";break;
+            case 7: tarjeta.style.background = "#fb8ab1";
+            subTarjeta.style.borderColor = "#353535";
+            h5.style.color = "#353535";break;
+            case 8: tarjeta.style.background = "#ecab0c";
+            subTarjeta.style.borderColor = "white";
+            h5.style.color = "white";break;
+            case 9: tarjeta.style.background = "#15c483";
+            subTarjeta.style.borderColor = "#353535";
+            h5.style.color = "#353535";break;
+            case 10: tarjeta.style.background = "#34a0eb";
+            subTarjeta.style.borderColor = "white";
+            h5.style.color = "white";break;
+            case 11: tarjeta.style.background = "#bff80d";
+            subTarjeta.style.borderColor = "#353535";
+            h5.style.color = "#353535";break;
+            case 12: tarjeta.style.background = "#435982";
+            subTarjeta.style.borderColor = "white";
+            h5.style.color = "white";break;
+            case 13: tarjeta.style.background = "#b490da";
+            subTarjeta.style.borderColor = "#353535";
+            h5.style.color = "#353535";break;
+            case 14: tarjeta.style.background = "#044f95";
+            subTarjeta.style.borderColor = "white";
+            h5.style.color = "white";break;
+            case 15: tarjeta.style.background = "#a10646";
+            subTarjeta.style.borderColor = "white";
+            h5.style.color = "white";break;
+            case 16: tarjeta.style.background = "#108e42";
+            subTarjeta.style.borderColor = "white";
+            h5.style.color = "white";break;
+            case 17: tarjeta.style.background = "#d51962";
+            subTarjeta.style.borderColor = "white";
+            h5.style.color = "white";break;
+            case 18: tarjeta.style.background = "#2e4c21";
+            subTarjeta.style.borderColor = "white";
+            h5.style.color = "white";break;
+            case 19: tarjeta.style.background = "#a85f01";
+            subTarjeta.style.borderColor = "white";
+            h5.style.color = "white";break;
+            case 20: tarjeta.style.background = "white";
+            subTarjeta.style.borderColor = "#353535";
+            h5.style.color = "#353535";break;
         }
 
     }
@@ -87,6 +133,9 @@ const Tarjeta = () => {
         setInput(document.getElementById("inputHeader"));
         setImagen(document.getElementById("imagen"));
         setTarjeta(document.getElementById("contenedor"));
+        document.getElementById("tarjeta").style.background = "none";
+        setH5(document.getElementById("propiedadMasValor"));
+        setSubTarjeta(document.getElementById("tarjeta"));
     },[url]);
 
   return (
@@ -121,7 +170,7 @@ const Tarjeta = () => {
           <div className="card p-1 m-2" id="tarjeta" style={{width: ancho + 'em'}}>
               <img src={url} className="card-img-top" id="imagen" alt="Foto" style={{filter: `${propiedad}(${valor}%)`}}></img>
               <div className="card-body">
-                  <h5 className="card-title">{propiedadTitulo}{valor}</h5>
+                  <h5 className="card-title fw-bold" id="propiedadMasValor">{propiedadTitulo}{valor}</h5>
               </div>
           </div>
       </div>
