@@ -167,12 +167,16 @@ const Tarjeta = () => {
                   </div>
               </div>
           </header>
+          <div className="container-fluid overflow-x-auto">
           <div className="card p-1 m-2" id="tarjeta" style={{width: ancho + 'em'}}>
               <img src={url} className="card-img-top" id="imagen" alt="Foto" style={{filter: `${propiedad}(${valor}%)`}}></img>
               <div className="card-body">
                   <h5 className="card-title fw-bold" id="propiedadMasValor">{propiedadTitulo}{valor}</h5>
               </div>
           </div>
+
+          </div>
+          
       </div>
   )
 }
